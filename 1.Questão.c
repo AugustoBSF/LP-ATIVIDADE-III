@@ -22,9 +22,9 @@ int main()
     int MenorIdade = 999999999;
     float MenorPeso = 999999999;
     char PessoaVelha[200];
-    char PessoaNova[200];
-    char PessoaGorda[200];
-    char PessoaMagra[200];
+    char PessoaNovinha[200];
+    char PessoaPesada[200];
+    char PessoaLeve[200];
     char PessoaAlta[200];
     char PessoaBaixa[200];
 
@@ -48,7 +48,7 @@ int main()
         if (idade[i] < MenorIdade)
         {
             MenorIdade = idade[i];
-            strcpy(PessoaNova, Nome[i]);
+            strcpy(PessoaNovinha, Nome[i]);
         }
 
         printf("Digite seu peso: ");
@@ -57,12 +57,12 @@ int main()
         if (peso[i] > MaiorPeso)
         {
             MaiorPeso = peso[i];
-            strcpy(PessoaGorda, Nome[i]);
+            strcpy(PessoaPesada, Nome[i]);
         }
         if (peso[i] < MenorPeso)
         {
             MenorPeso = peso[i];
-            strcpy(PessoaMagra, Nome[i]);
+            strcpy(PessoaLeve, Nome[i]);
         }
 
         printf("Digite sua altura: ");
@@ -83,6 +83,8 @@ int main()
         system("cls");
     }
 
+       printf("\nExibindo Resultados... \n\n\n");
+       sleep(2);
        for (i = 0; i < 5; i++){
         printf("%d Pessoa\n", i + 1);
         printf("Nome: %s\n", Nome[i]);
@@ -103,12 +105,12 @@ int main()
     printf("\n");
     fflush(stdin);
     printf("Pessoa mais pesada\n");
-    printf("Nome: %s\n", PessoaGorda);
+    printf("Nome: %s\n", PessoaPesada);
     printf("Peso: %.2f\n", MaiorPeso);
     printf("\n");
     fflush(stdin);
     printf("Pessoa mais leve\n");
-    printf("Nome: %s\n", PessoaMagra);
+    printf("Nome: %s\n", PessoaLeve);
     printf("Peso: %.2f\n", MenorPeso);
     printf("\n");
     fflush(stdin);
@@ -118,9 +120,9 @@ int main()
     printf("\n");
     fflush(stdin);
     printf("Pessoa mais nova\n");
-    printf("Nome: %s\n", PessoaNova);
+    printf("Nome: %s\n", PessoaNovinha);
     printf("Idade: %d\n", MenorIdade);
     printf("\n");
-
+getchar();
     return 0;
 }
