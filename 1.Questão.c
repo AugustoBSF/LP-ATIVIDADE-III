@@ -1,138 +1,126 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include <math.h>
-#include <time.h>
 #include <locale.h>
+#include <ctype.h>
+#include <string.h>
+#include <time.h>
 
 int main()
 {
 
-    // variaveis
-    setlocale(LC_ALL, "portuguse");
-    int i;
+    setlocale(LC_ALL, "portuguese");
 
-    char nome[5][200];
+    int i;
+    char Nome[5][200];
     int idade[5];
     float peso[5];
     float altura[5];
-
-    float pessoaAlta = 0;
-    float pessoaBaixa = 999999;
-
-    float pessoaPesadinha = 0;
-    float pessoaLeve = 99999;
-
-    int pessoaVelhinha = 0;
-    int pessoaNovinha = 999999;
-
-    int posicaoAlturaMaior;
-    int posicaoAlturaMenor;
-
-    int posicaoPesoMaior;
-    int posicaoPesoMenor;
-
-    int posicaoIdadeMaior;
-    int posicaoIdadeMenor;
-
-    // usuario
+    float Maioraltura = 0;
+    int MaiorIdade = 0;
+    float MaiorPeso = 0;
+    float Menoraltura = 999999999;
+    int MenorIdade = 999999999;
+    float MenorPeso = 999999999;
+    char PessoaVelha[200];
+    char PessoaNova[200];
+    char PessoaGorda[200];
+    char PessoaMagra[200];
+    char PessoaAlta[200];
+    char PessoaBaixa[200];
 
     for (i = 0; i < 5; i++)
     {
-        printf("Dados da %dº pessoa: \n", i + 1);
+        printf("%d Pessoa\n", i + 1);
         printf("\n");
-
-        printf("Informe o seu nome: ");
-        gets(nome[i]);
+        printf("Digite seu nome: ");
+        gets(Nome[i]);
 
         fflush(stdin);
 
-        printf("Informe sua idade: ");
+        printf("Digite sua idade: ");
         scanf("%d", &idade[i]);
 
-        printf("Informe seu peso: ");
+        if (idade[i] > MaiorIdade)
+        {
+            MaiorIdade = idade[i];
+            strcpy(PessoaVelha, Nome[i]);
+        }
+        if (idade[i] < MenorIdade)
+        {
+            MenorIdade = idade[i];
+            strcpy(PessoaNova, Nome[i]);
+        }
+
+        printf("Digite seu peso: ");
         scanf("%f", &peso[i]);
 
-        fflush(stdin);
+        if (peso[i] > MaiorPeso)
+        {
+            MaiorPeso = peso[i];
+            strcpy(PessoaGorda, Nome[i]);
+        }
+        if (peso[i] < MenorPeso)
+        {
+            MenorPeso = peso[i];
+            strcpy(PessoaMagra, Nome[i]);
+        }
 
-        printf("Informe sua altura: ");
+        printf("Digite sua altura: ");
         scanf("%f", &altura[i]);
 
-        pessoaAlta = pessoaAlta > altura[i] ? pessoaAlta : altura[i];
-        pessoaBaixa = pessoaBaixa < altura[i] ? pessoaBaixa : altura[i];
-
-        if (pessoaAlta = altura[i])
+        if (altura[i] > Maioraltura)
         {
-            posicaoAlturaMaior = i;
+            Maioraltura = altura[i];
+            strcpy(PessoaAlta, Nome[i]);
         }
-        else
+        if (altura[i] < Menoraltura)
         {
-            posicaoAlturaMenor = i;
-        }
-
-        pessoaPesadinha = pessoaPesadinha > peso[i] ? pessoaPesadinha : peso[i];
-        pessoaLeve = pessoaLeve < peso[i] ? pessoaLeve : peso[i];
-
-        if (pessoaPesadinha = peso[i])
-        {
-            posicaoPesoMaior = i;
-        }
-        else
-        {
-            posicaoPesoMenor = i;
-        }
-
-        pessoaVelhinha = pessoaVelhinha > idade[i] ? pessoaVelhinha : idade[i];
-        pessoaNovinha = pessoaNovinha < idade[i] ? pessoaNovinha : idade[i];
-
-        if (pessoaVelhinha = idade[i])
-        {
-            posicaoIdadeMaior = i;
-        }
-        else
-        {
-            posicaoIdadeMenor = i;
+            Menoraltura = altura[i];
+            strcpy(PessoaBaixa, Nome[i]);
         }
 
         fflush(stdin);
+        system("cls");
     }
 
-    
-    {
-        system("cls || clear");
-    }
-    printf("Exibindo resultados....");
-    sleep(1);
-    for (i = 0; i < 5; i++)
-    {
-        printf("Dados da %dº pessoa: \n", i + 1);
-        printf("\n");
-        printf("Nome: %s\n", nome[i]);
+       for (i = 0; i < 5; i++){
+        printf("%d Pessoa\n", i + 1);
+        printf("Nome: %s\n", Nome[i]);
         printf("Idade: %d\n", idade[i]);
-        printf("Peso: %.2f kg\n", peso[i]);
-        printf("Altura: %.2f m\n", altura[i]);
-        printf("\n");
-    }
+        printf("Peso: %.2f\n", peso[i]);
+        printf("Altura: %.2f\n", altura[i]);
+       }
 
-    printf("Nome da pessoa da pessoa mais alta: %s\n", nome[posicaoAlturaMaior]);
-    printf("Sua altura: %.2f m \n", pessoaAlta);
-    printf("Nome da pessoa da pessoa mais baixa: %s\n", nome[posicaoAlturaMenor]);
-    printf("Sua altura: %.2f m \n ", pessoaBaixa);
+
+    printf("Pessoa mais alta\n");
+    printf("Nome: %s\n", PessoaAlta);
+    printf("Altura: %.2f\n", Maioraltura);
+    printf("\n");
+    fflush(stdin);
+    printf("Pessoa mais baixa\n");
+    printf("Nome: %s\n", PessoaBaixa);
+    printf("Altura: %.2f\n", Menoraltura);
+    printf("\n");
+    fflush(stdin);
+    printf("Pessoa mais pesada\n");
+    printf("Nome: %s\n", PessoaGorda);
+    printf("Peso: %.2f\n", MaiorPeso);
+    printf("\n");
+    fflush(stdin);
+    printf("Pessoa mais leve\n");
+    printf("Nome: %s\n", PessoaMagra);
+    printf("Peso: %.2f\n", MenorPeso);
+    printf("\n");
+    fflush(stdin);
+    printf("Pessoa mais velha\n");
+    printf("Nome: %s\n", PessoaVelha);
+    printf("Idade: %d\n", MaiorIdade);
+    printf("\n");
+    fflush(stdin);
+    printf("Pessoa mais nova\n");
+    printf("Nome: %s\n", PessoaNova);
+    printf("Idade: %d\n", MenorIdade);
     printf("\n");
 
-    printf("Nome da pessoa com maior peso: %s\n", nome[posicaoPesoMaior]);
-    printf("Seu peso: %.2f \n", pessoaPesadinha);
-    printf("Nome da pessoa com menor peso: %s\n", nome[posicaoPesoMenor]);
-    printf("Seu peso: %.2f \n", pessoaLeve);
-    printf("\n");
-
-    printf("Nome pessoa com maior idade: %s\n", nome[posicaoIdadeMaior]);
-    printf("Sua idade: %d \n", pessoaVelhinha);
-    printf("Nome pessoa com menor idade: %s\n", nome[posicaoIdadeMenor]);
-    printf("Sua idade: %d \n", pessoaNovinha);
-    printf("\n");
-
-    getchar();
     return 0;
 }
